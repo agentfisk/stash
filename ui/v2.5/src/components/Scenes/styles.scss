@@ -543,6 +543,16 @@ input[type="range"].blue-slider {
   }
 }
 
+.interactive-halve-button {
+  &.not-interactive-halve {
+    color: rgba(191, 204, 214, 0.5);
+  }
+
+  &.interactive-halve {
+    color: #664c3f;
+  }
+}
+
 .o-counter .dropdown-toggle {
   background-color: rgba(0, 0, 0, 0);
   border: none;

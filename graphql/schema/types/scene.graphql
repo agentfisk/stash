@@ -72,6 +72,7 @@ input SceneUpdateInput {
   date: String
   rating: Int
   organized: Boolean
+  interactive_halve: Boolean
   studio_id: ID
   gallery_ids: [ID!]
   performer_ids: [ID!]

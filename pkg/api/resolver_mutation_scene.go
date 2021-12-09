@@ -109,6 +109,7 @@ func (r *mutationResolver) sceneUpdate(ctx context.Context, input models.SceneUp
 	updatedScene.Rating = translator.nullInt64(input.Rating, "rating")
 	updatedScene.StudioID = translator.nullInt64FromString(input.StudioID, "studio_id")
 	updatedScene.Organized = input.Organized
+	updatedScene.InteractiveHalve = input.InteractiveHalve
 
 	if input.CoverImage != nil && *input.CoverImage != "" {
 		var err error

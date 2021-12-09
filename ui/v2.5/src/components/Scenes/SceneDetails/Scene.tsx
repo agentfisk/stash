@@ -38,6 +38,7 @@ import { DeleteScenesDialog } from "../DeleteScenesDialog";
 import { GenerateDialog } from "../../Dialogs/GenerateDialog";
 import { SceneVideoFilterPanel } from "./SceneVideoFilterPanel";
 import { OrganizedButton } from "./OrganizedButton";
+import { InteractiveHalverButton } from "./InteractiveHalverButton";
 
 interface IProps {
   scene: GQL.SceneDataFragment;
@@ -66,6 +67,7 @@ const ScenePage: React.FC<IProps> = ({ scene, refetch }) => {
   const [resetO] = useSceneResetO(scene.id);
 
   const [organizedLoading, setOrganizedLoading] = useState(false);
+  const [interactiveHalveLoading, setInteractiveHalveLoading] = useState(false);
 
   const [activeTabKey, setActiveTabKey] = useState("scene-details-panel");
 
@@ -157,6 +159,24 @@ const ScenePage: React.FC<IProps> = ({ scene, refetch }) => {
       Toast.error(e);
     } finally {
       setOrganizedLoading(false);
+    }
+  };
+
+  const onInteractiveHalveClick = async () => {
+    try {
+      setInteractiveHalveLoading(true);
+      await updateScene({
+        variables: {
+          input: {
+            id: scene.id,
+            interactive_halve: !scene.interactive_halve,
+          },
+        },
+      });
+    } catch (e) {
+      Toast.error(e);
+    } finally {
+      setInteractiveHalveLoading(false);
     }
   };
 
@@ -329,6 +349,20 @@ const ScenePage: React.FC<IProps> = ({ scene, refetch }) => {
     }
   }
 
+  function maybeRenderInteractiveHalverButton() {
+    if (scene.interactive) {
+      return (
+      <Nav.Item>
+        <InteractiveHalverButton
+          loading={interactiveHalveLoading}
+          interactive_halve={scene.interactive_halve}
+          onClick={onInteractiveHalveClick}
+        />
+      </Nav.Item>
+      );
+    }
+  }
+
   function maybeRenderSceneGenerateDialog() {
     if (isGenerateDialogOpen) {
       return (
@@ -480,6 +514,7 @@ const ScenePage: React.FC<IProps> = ({ scene, refetch }) => {
                 onClick={onOrganizedClick}
               />
             </Nav.Item>
+            {maybeRenderInteractiveHalverButton()}
             <Nav.Item>{renderOperations()}</Nav.Item>
           </ButtonGroup>
         </Nav>
