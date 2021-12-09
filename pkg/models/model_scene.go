@@ -36,7 +36,7 @@ type Scene struct {
 	UpdatedAt        SQLiteTimestamp     `db:"updated_at" json:"updated_at"`
 	Interactive      bool                `db:"interactive" json:"interactive"`
 	InteractiveSpeed sql.NullInt64       `db:"interactive_speed" json:"interactive_speed"`
-	InteractiveHalve *bool               `db:"interactive_halve" json:"interactive_halve"`
+	InteractiveHalve bool                `db:"interactive_halve" json:"interactive_halve"`
 }
 
 func (s *Scene) File() File {
