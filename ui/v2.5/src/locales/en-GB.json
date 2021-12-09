@@ -400,6 +400,10 @@
         "description": "Time offset in milliseconds for interactive scripts playback.",
         "heading": "Funscript Offset (ms)"
       },
+      "funscript_proxy": {
+        "description": "URL to funscript proxy server",
+        "heading": "Funscript Proxy Server"
+      },
       "handy_connection_key": {
         "description": "Handy connection key to use for interactive scenes.",
         "heading": "Handy Connection Key"

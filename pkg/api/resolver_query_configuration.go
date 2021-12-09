@@ -120,6 +120,7 @@ func makeConfigInterfaceResult() *models.ConfigInterfaceResult {
 	slideshowDelay := config.GetSlideshowDelay()
 	handyKey := config.GetHandyKey()
 	scriptOffset := config.GetFunscriptOffset()
+	funscriptProxy := config.GetFunscriptProxy()
 
 	return &models.ConfigInterfaceResult{
 		MenuItems:                    menuItems,
@@ -139,6 +140,7 @@ func makeConfigInterfaceResult() *models.ConfigInterfaceResult {
 		DisabledDropdownCreate:       config.GetDisableDropdownCreate(),
 		HandyKey:                     &handyKey,
 		FunscriptOffset:              &scriptOffset,
+		FunscriptProxy:               &funscriptProxy,
 	}
 }
 

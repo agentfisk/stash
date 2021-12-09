@@ -145,6 +145,7 @@ const (
 
 	HandyKey        = "handy_key"
 	FunscriptOffset = "funscript_offset"
+	FunscriptProxy  = "funscript_proxy"
 
 	// Security
 	TrustedProxies                                    = "trusted_proxies"
@@ -919,6 +920,10 @@ func (i *Instance) GetHandyKey() string {
 
 func (i *Instance) GetFunscriptOffset() int {
 	return i.getInt(FunscriptOffset)
+}
+
+func (i *Instance) GetFunscriptProxy() string {
+	return i.getString(FunscriptProxy)
 }
 
 func (i *Instance) GetDeleteFileDefault() bool {

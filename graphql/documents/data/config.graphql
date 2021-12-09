@@ -68,6 +68,7 @@ fragment ConfigInterfaceData on ConfigInterfaceResult {
   }
   handyKey
   funscriptOffset
+  funscriptProxy
 }
 
 fragment ConfigDLNAData on ConfigDLNAResult {

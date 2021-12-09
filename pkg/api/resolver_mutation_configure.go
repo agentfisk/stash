@@ -318,6 +318,10 @@ func (r *mutationResolver) ConfigureInterface(ctx context.Context, input models.
 		c.Set(config.FunscriptOffset, *input.FunscriptOffset)
 	}
 
+	if input.FunscriptProxy != nil {
+		c.Set(config.FunscriptProxy, *input.FunscriptProxy)
+	}
+
 	if err := c.Write(); err != nil {
 		return makeConfigInterfaceResult(), err
 	}

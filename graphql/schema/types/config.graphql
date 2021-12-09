@@ -235,6 +235,8 @@ input ConfigInterfaceInput {
   handyKey: String
   """Funscript Time Offset"""
   funscriptOffset: Int
+  """Funscript Proxy Server"""
+  funscriptProxy: String
   """True if we should not auto-open a browser window on startup"""
   noBrowser: Boolean
 }
@@ -288,6 +290,8 @@ type ConfigInterfaceResult {
   handyKey: String
   """Funscript Time Offset"""
   funscriptOffset: Int
+  """Funscript Proxy Server"""
+  funscriptProxy: String
 }
 
 input ConfigDLNAInput {
