@@ -2,6 +2,7 @@ package api
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"strconv"
 	"strings"
@@ -270,6 +271,10 @@ func (rs sceneRoutes) ChapterVtt(w http.ResponseWriter, r *http.Request) {
 
 func (rs sceneRoutes) Funscript(w http.ResponseWriter, r *http.Request) {
 	scene := r.Context().Value(sceneKey).(*models.Scene)
+	proxy := config.GetInstance().GetFunscriptProxy()
+	if proxy != "" && scene.InteractiveHalve {
+		http.Redirect(w, r, fmt.Sprintf("%s/fs-halve?fs=%s", proxy, utils.GetFunscriptPath(scene.Path)), http.StatusFound)
+	}
 	funscript := utils.GetFunscriptPath(scene.Path)
 	utils.ServeFileNoCache(w, r, funscript)
 }
