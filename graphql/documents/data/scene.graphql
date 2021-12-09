@@ -15,6 +15,7 @@ fragment SceneData on Scene {
   interactive_speed
   created_at
   updated_at
+  interactive_halve
 
   file {
     size
